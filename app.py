@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from textblob import TextBlob
+import uvicorn
 
 app = FastAPI(title="Sentiment Analysis API")
 
@@ -27,3 +28,6 @@ def sentiment_analysis(text: str):
         "polarity": polarity,
         "subjectivity": subjectivity
     }
+
+if __name__ == '__main__':
+    uvicorn.run('app:app', host='0.0.0.0', port=8000)
